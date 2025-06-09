@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 //@Component //By Default id is "student", but we can give custom id names as well by @Component("abcd")
+//It means we don't need to create bean for this "Student" class
 @Component("abcd")
 public class Student {
     private String name="aryan";
