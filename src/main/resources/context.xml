@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans >
+
+    <bean class="org.training.IPL" id="ipl">
+<!--        "property" call the default constructor (no-args) and setters-->
+<!--        Setter DI-->
+<!--        <property name="sponsor" value="TATA"></property>-->
+<!--        <property name="noOfTeams" value="11"></property>-->
+<!--        <property name="prize" value="12000"></property>-->
+<!--        <property name="team" ref="teams"></property>-->
+
+
+<!--        "constructor-args" call the parameter constructor, need to follow the constructor parameters, or we can use index="" property -->
+<!--        Constructor DI-->
+        <constructor-arg value="Dream 11"></constructor-arg>
+        <constructor-arg value="14"></constructor-arg>
+        <constructor-arg value="89900"></constructor-arg>
+        <constructor-arg ref="teams"></constructor-arg>
+
+    </bean>
+
+    <bean class="org.training.Team" id="teams">
+
+        <!--        "property" call the default constructor (no-args) and setters-->
+        <!--        Setter DI-->
+<!--        <property name="name" value="CSK"></property>-->
+<!--        <property name="squadSize" value="29"></property>-->
+
+
+        <!--        "constructor-args" call the parameter constructor, need to follow the constructor parameters, or we can use index="" property -->
+        <!--        Constructor DI-->
+        <constructor-arg value="MI"></constructor-arg>
+        <constructor-arg value="17"></constructor-arg>
+
+    </bean>
+
+    <bean class="org.training.Engineer" id="engineer" autowire="constructor">
+        <property name="name" value="Rahul"></property>
+        <property name="skills" value="java,springboot"></property>
+        <property name="salary" value="999000"></property>
+
+<!--        Below line is replace by "autowire" property-->
+<!--        <property name="address" ref="secAddress"></property>-->
+<!--        autowire has 3 types: 1. byName (id and name -> same)
+                                  2. byType (type in "Engineer" class matches with "Address" bean )
+                                  3. constructor (constructor of property, which needed to be autowire)-->
+    </bean>
+
+
+<!--    <bean class="org.training.Address" id="address">-->
+<!--        <property name="pin" value="201007"></property>-->
+<!--        <property name="city" value="ghaziabad"></property>-->
+<!--    </bean>-->
+
+
+<!--    Type-> Address-->
+    <bean class="org.training.Address" id="secAddress">
+        <property name="pin" value="560066"></property>
+        <property name="city" value="bangalore"></property>
+    </bean>
+
+
+
+    <bean scope="prototype" init-method="callAtStart" destroy-method="callAtEnd" class="org.training.WWE" id="wwe">
+        <property name="sponsor" value="Netflix"></property>
+        <property name="event" value="Royal Rumble"></property>
+
+        <!--    Initializing Collections in Spring-->
+        <property name="superstars">
+            <list>
+                <ref bean="superstar1"></ref>
+                <ref bean="superstar2"></ref>
+                <ref bean="superstar3"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.training.Superstar" id="superstar1">
+        <property name="name" value="Triple H"></property>
+        <property name="age" value="55"></property>
+    </bean>
+
+    <bean class="org.training.Superstar" id="superstar2">
+        <property name="name" value="Seth Rollins"></property>
+        <property name="age" value="45"></property>
+    </bean>
+
+    <bean class="org.training.Superstar" id="superstar3">
+        <property name="name" value="Brock Lesnar"></property>
+        <property name="age" value="50"></property>
+    </bean>
+
+
+</beans>

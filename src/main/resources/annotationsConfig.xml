@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+<!--    For Annotations to work..-->
+    <context:annotation-config></context:annotation-config>
+
+    <bean class="org.training.AnnotationsEngineer" id="anEngineer">
+        <property name="name" value="mohit"></property>
+        <property name="skills" value=".net php"></property>
+    </bean>
+
+<!--    By using @Autowired, values are injected..-->
+    <bean class="org.training.Address" id="address">
+        <property name="pin" value="898989"></property>
+        <property name="city" value="Delhi"></property>
+    </bean>
+
+
+<!-- @Component: Automatically detects and registers it as a bean.-->
+    <context:component-scan base-package="org.training"></context:component-scan>
+
+</beans>
