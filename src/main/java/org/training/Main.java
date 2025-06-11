@@ -1,7 +1,14 @@
 package org.training;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Arrays;
+import java.util.List;
+
+@Configuration
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
@@ -18,7 +25,7 @@ public class Main {
 //        WWE wwe1 = context.getBean("wwe",WWE.class);
 
         //Annotations:
-//        AnnotationsEngineer annotationsEngineer = context.getBean("anEngineer",AnnotationsEngineer.class);
+        AnnotationsEngineer annotationsEngineer = context.getBean("anEngineer",AnnotationsEngineer.class);
         Student student = context.getBean("abcd",Student.class);
 
         //3.Call methods on the bean
@@ -32,7 +39,22 @@ public class Main {
 //        context.close(); //calls the destroy-method
 
         //Annotations:
-//        System.out.println(annotationsEngineer.toString());
+        System.out.println(annotationsEngineer.toString());
+        annotationsEngineer.someMethod();
         System.out.println(student.toString());
     }
+
+    @Bean
+    @Primary
+    public List<String> getAllNames(){
+        return Arrays.asList("mohit","tinku","mukesh");
+    }
+
+    @Bean
+    public List<String> getOtherNames(){
+        return Arrays.asList("abdul","junaid","saif");
+    }
+
+    //@Primary -> added with "methods" only
+    //@Qualifier -> added via Injection
 }

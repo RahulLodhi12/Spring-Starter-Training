@@ -16,6 +16,7 @@
     <bean class="org.training.AnnotationsEngineer" id="anEngineer">
         <property name="name" value="mohit"></property>
         <property name="skills" value=".net php"></property>
+<!--        By @Autowired, no need to write <property name="address" ref="address"></property>-->
     </bean>
 
 <!--    By using @Autowired, values are injected..-->
@@ -26,6 +27,7 @@
 
 
 <!-- @Component: Automatically detects and registers it as a bean.-->
+<!--    By using @Component, no need to create bean-->
     <context:component-scan base-package="org.training"></context:component-scan>
 
 </beans>

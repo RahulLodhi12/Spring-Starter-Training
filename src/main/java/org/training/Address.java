@@ -27,4 +27,8 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public void changeAddress(){
+        System.out.println("Address Changed..");
+    }
 }

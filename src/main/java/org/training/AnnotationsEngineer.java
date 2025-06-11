@@ -6,8 +6,10 @@ public class AnnotationsEngineer {
     private String name;
     private String skills;
 
+    //With @Autowired, there is no need to create object/bean
     @Autowired //if not used @Autowired, then address=null
     private Address address;
+
 
     @Override
     public String toString() {
@@ -42,5 +44,9 @@ public class AnnotationsEngineer {
         this.address = address;
     }
 
+
+    public void someMethod(){
+        address.changeAddress();
+    }
 
 }
